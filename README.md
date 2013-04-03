@@ -2,13 +2,29 @@
 
 An easy to set up connection for a MSSQL database in python. Doesn't do much besides give a connection, maybe we'll expand it later.
 
+## First off
+You'll need the following packages (in deb): `unixodbc unixodbc-dev freetds-dev tdsodbc freetds-bin`
+
+Furthermore, you'll need to configure a freeTDS connection in odbc
+```
+--- /etc/odbcinst.ini or ~/.odbcinst.ini ---
+[FreeTDS]
+Description = FreeTDS
+Driver = /usr/lib/x86_64-linux-gnu/odbc/libtdsodbc.so
+Setup = /usr/lib/x86_64-linux-gnu/odbc/libtdsS.so
+FileUsage = 1
+CPTimeout =
+CPResuse  =
+client charset = utf-8
+```
+
 ## Setup as project
 1.  clone
-2.  make and activate virtualenv
+2.  make and activate virtualenv: `virtualenv env` `source env/bin/activate`
 3.  `pip install -r requirements.txt`
 
 ## Install as package
-`pip install git+ssh://git@github.com:PLOS-Web/mssqlcon.git`
+`pip install git+ssh://git@github.com/PLOS-Web/mssqlcon.git`
 
 ## Usage
 ```python
